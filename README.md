@@ -20,4 +20,4 @@ This script lets you get push notifications about your [Checkvist](https://check
 - Auto-detection of timezone in user's Checkvist account instead of manually setting.
 - Enhanced documentation with demo screenshots.
 - Review of the notification click actions (currently just opens Checkvist mobile page).
-- Testing with other push APIs such as [OneSignal](https://onesignal.com) and ]PushOver](http://pushover.net).
+- Testing with other push APIs such as [OneSignal](https://onesignal.com) and [PushOver](http://pushover.net).
