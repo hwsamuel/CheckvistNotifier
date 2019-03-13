@@ -1,5 +1,5 @@
-USER_NAME = 'checkvist-email'
-API_KEY = 'checkvist-profile-open-api-key'
-LIST_ID = 0
-DEVICE_ID = 'wirepusher-id'
+USER_NAME = 'hamman.samuel@gmail.com'
+API_KEY = 'ikH3EEcApq8Ptz'
+LIST_ID = 699425
+DEVICE_ID = 'mpbC3'
 USER_TIMEZONE = 'America/Toronto'
