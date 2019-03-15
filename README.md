@@ -21,3 +21,5 @@ This script lets you get push notifications about your [Checkvist](https://check
 - Enhanced documentation with demo screenshots.
 - Review of the notification click actions (currently just opens Checkvist mobile page).
 - Testing with other push APIs such as [OneSignal](https://onesignal.com) and [PushOver](http://pushover.net).
+- Add unit tests to script functions.
+- Host script on PaaS like [OpenShift](https://openshift.com) or [Heroku](https://heroku.com) to provide notifications as a service.
