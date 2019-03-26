@@ -54,9 +54,9 @@ def get_today_tasks(all_tasks):
 		
 	return today_tasks
 	
-def send_push(title, message, list_id):
+def send_push(title):
 	ping_url = 'https://wirepusher.com/send'
-	data = {'id': DEVICE_ID, 'title': title, 'message': message, 'action': 'https://m.checkvist.com/app/list/'+list_id}
+	data = {'id': DEVICE_ID, 'title': title, 'message': title, 'action': 'https://m.checkvist.com/app/due.html}
 	response = requests.post(ping_url, data)
 	print '[' + str(response.status_code) + '] ' + title
 
@@ -79,7 +79,7 @@ def main():
 		list_id = task['list_id']
 		
 		if current_hour != due_time: continue
-		send_push(title, title, list_id)
+		send_push(title)
 
 if __name__ == "__main__" :
 	main()
