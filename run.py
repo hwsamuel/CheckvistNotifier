@@ -56,7 +56,7 @@ def get_today_tasks(all_tasks):
 	
 def send_push(title):
 	ping_url = 'https://wirepusher.com/send'
-	data = {'id': DEVICE_ID, 'title': title, 'message': title, 'action': 'https://m.checkvist.com/app/due.html}
+	data = {'id': DEVICE_ID, 'title': title, 'message': title, 'action': 'https://m.checkvist.com/app/due.html'}
 	response = requests.post(ping_url, data)
 	print '[' + str(response.status_code) + '] ' + title
 
