@@ -1,6 +1,6 @@
 ## Checkvist Notifier [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This script lets you get push notifications about your [Checkvist](https://checkvist.com) tasks on your Android phone. It uses the Checkvist [Open API](https://checkvist.com/auth/api) and the [WirePusher API](http://wirepusher.com/help).
+This script lets you get due notifications of your [Checkvist](https://checkvist.com) tasks on your Android phone. It uses the Checkvist [Open API](https://checkvist.com/auth/api) and the [WirePusher API](http://wirepusher.com/help).
 
 ![Checkvist-WirePusher Demo](demo.png)
 
