@@ -8,7 +8,7 @@ This script lets you get due notifications of your [Checkvist](https://checkvist
 
 - Checkvist account email and open API key.
 - [WirePusher installed](https://play.google.com/store/apps/details?id=com.mrivan.wirepusher) on your Android phone.
-- [Cron](https://www.howtogeek.com/101288/how-to-schedule-tasks-on-linux-an-introduction-to-crontab-files) or [Task Scheduler](https://www.howtogeek.com/123393/how-to-automatically-run-programs-and-set-reminders-with-the-windows-task-scheduler) to run this script every hour via `python run.py` (tested with Python 2.7, requires `pytz` via `pip install pytz`).
+- [Cron](https://www.howtogeek.com/101288/how-to-schedule-tasks-on-linux-an-introduction-to-crontab-files) or [Task Scheduler](https://www.howtogeek.com/123393/how-to-automatically-run-programs-and-set-reminders-with-the-windows-task-scheduler) to run this script every hour via `python notify.py` (tested with Python 2.7, requires `pytz` via `pip install pytz`).
 
 ## Setup
 
