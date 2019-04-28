@@ -60,6 +60,14 @@ def send_push(title):
 	response = requests.post(ping_url, data)
 	print '[' + str(response.status_code) + '] ' + title
 
+def onesignal_push(title):
+	header = {'Content-Type': 'application/json; charset=utf-8', 'Authorization': 'Basic '+ONESIGNAL_KEY}
+
+	ping_url = 'https://onesignal.com/api/v1/notifications'
+	data = {'app_id': ONESIGNAL_APPID, 'included_segments': ["All"], 'contents': {'en': title}}
+	response = requests.post(ping_url, headers=header, data=json.dumps(data))
+	print '[' + str(response.status_code) + '] ' + title
+	
 def main():
 	auth_token = get_auth(USER_NAME, API_KEY)
 	all_lists = get_lists(auth_token)
@@ -79,7 +87,7 @@ def main():
 		list_id = task['list_id']
 		
 		if current_hour != due_time: continue
-		send_push(title)
+		onesignal_push(title)
 
 if __name__ == "__main__" :
 	main()
