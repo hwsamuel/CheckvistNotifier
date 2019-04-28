@@ -54,7 +54,7 @@ def get_today_tasks(all_tasks):
 		
 	return today_tasks
 	
-def send_push(title):
+def wp_push(title):
 	ping_url = 'https://wirepusher.com/send'
 	data = {'id': DEVICE_ID, 'title': title, 'message': title, 'action': 'https://m.checkvist.com/app/due.html'}
 	response = requests.post(ping_url, data)
@@ -87,7 +87,7 @@ def main():
 		list_id = task['list_id']
 		
 		if current_hour != due_time: continue
-		onesignal_push(title)
+		wp_push(title)
 
 if __name__ == "__main__" :
 	main()
