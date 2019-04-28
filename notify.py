@@ -50,21 +50,23 @@ def get_today_tasks(all_tasks):
 		due_time = due_time[0] if len(due_time) > 0 else DUE_DEFAULT
 		due_time = due_time.zfill(3)
 		
-		today_tasks.append({'title': title, 'due_time': due_time, 'list_id': list_id})
-		
+		today_tasks.append({'title': title, 'due_time': due_time, 'list_id': list_id, 'id': id})
+
 	return today_tasks
 	
-def wp_push(title):
+def wirepusher_send(id, list_id, title):
 	ping_url = 'https://wirepusher.com/send'
-	data = {'id': DEVICE_ID, 'title': title, 'message': title, 'action': 'https://m.checkvist.com/app/due.html'}
+	action_url = 'https://m.checkvist.com/app/list/%s/item/%s' % (list_id, id)
+	data = {'id': DEVICE_ID, 'title': title, 'message': title, 'action': action_url}
 	response = requests.post(ping_url, data)
 	print '[' + str(response.status_code) + '] ' + title
 
-def onesignal_push(title):
-	header = {'Content-Type': 'application/json; charset=utf-8', 'Authorization': 'Basic '+ONESIGNAL_KEY}
+def onesignal_send(id, list_id, title, app_id, api_key):
+	header = {'Content-Type': 'application/json; charset=utf-8', 'Authorization': 'Basic '+api_key}
 
 	ping_url = 'https://onesignal.com/api/v1/notifications'
-	data = {'app_id': ONESIGNAL_APPID, 'included_segments': ["All"], 'contents': {'en': title}}
+	action_url = 'https://m.checkvist.com/app/list/%s/item/%s' % (list_id, id)
+	data = {'app_id': app_id, 'included_segments': ["Active Users"], 'contents': {'en': title}, 'url': action_url}
 	response = requests.post(ping_url, headers=header, data=json.dumps(data))
 	print '[' + str(response.status_code) + '] ' + title
 	
@@ -82,12 +84,13 @@ def main():
 	current_hour = current_hour.zfill(3)
 	
 	for task in today_tasks:
+		id = task['id']
 		due_time = task['due_time']
 		title = task['title']
 		list_id = task['list_id']
 		
 		if current_hour != due_time: continue
-		wp_push(title)
+		wirepusher_send(id, list_id, title)
 
 if __name__ == "__main__" :
 	main()
