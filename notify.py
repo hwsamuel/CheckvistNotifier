@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
-import requests, json, time, re, pytz, datetime
+import requests, json, time, re, pytz, datetime, webbrowser
+from win10toast import ToastNotifier
+
 from settings import *
 
 def get_today_date(time_zone):
@@ -54,9 +56,14 @@ def get_today_tasks(all_tasks):
 
 	return today_tasks
 	
+def win10_send(id, list_id, title):
+	action_url = 'https://checkvist.com/checklists/%s/tasks/%s' % (list_id, id)
+	toaster = ToastNotifier()
+	toaster.show_toast('Checkvist', title, icon_path='F:\\Checkvist Notifier\\checkvist.ico', duration=0, callback_on_click=lambda: webbrowser.open_new_tab(action_url))
+
 def wirepusher_send(id, list_id, title):
 	ping_url = 'https://wirepusher.com/send'
-	action_url = 'https://m.checkvist.com/app/list/%s/item/%s' % (list_id, id)
+	action_url = 'checkvist.https://m.checkvist.com/app/list/%s/item/%s' % (list_id, id)
 	data = {'id': DEVICE_ID, 'title': title, 'message': title, 'action': action_url}
 	response = requests.post(ping_url, data)
 	print '[' + str(response.status_code) + '] ' + title
@@ -69,7 +76,7 @@ def onesignal_send(id, list_id, title, app_id, api_key):
 	data = {'app_id': app_id, 'included_segments': ["Active Users"], 'contents': {'en': title}, 'url': action_url}
 	response = requests.post(ping_url, headers=header, data=json.dumps(data))
 	print '[' + str(response.status_code) + '] ' + title
-	
+
 def main():
 	auth_token = get_auth(USER_NAME, API_KEY)
 	all_lists = get_lists(auth_token)
@@ -90,7 +97,7 @@ def main():
 		list_id = task['list_id']
 		
 		if current_hour != due_time: continue
-		wirepusher_send(id, list_id, title)
+		win10_send(id, list_id, title)
 
 if __name__ == "__main__" :
 	main()
