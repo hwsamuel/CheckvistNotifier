@@ -1,4 +1,4 @@
-## Checkvist Notifier [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## Checkvist Notifier [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 This script lets you get due notifications of your [Checkvist](https://checkvist.com) tasks on your Android phone. It uses the Checkvist [Open API](https://checkvist.com/auth/api) and the [WirePusher API](http://wirepusher.com/help).
 
